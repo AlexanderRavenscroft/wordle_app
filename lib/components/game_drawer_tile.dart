@@ -15,18 +15,15 @@ class GameDrawerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.only(
-        left: MediaQuery.of(context).size.width * 0.04,
-      ),
       title: Text(
         text,
         style: AppTypography.wordStyle.copyWith(
           fontSize: MediaQuery.of(context).size.height * 0.03,
-        )
+        ),
       ),
       leading: Icon(icon),
       textColor: AppColors.text,
-      iconColor: AppColors.text,
+      iconColor: AppColors.secondary,
       onTap: onTap,
     );
   }

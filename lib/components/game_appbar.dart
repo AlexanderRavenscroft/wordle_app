@@ -32,13 +32,13 @@ class GameAppBar extends StatelessWidget {
         AppbarButton(
           icon: Icons.lightbulb,
           onPressed: () {
-             // TODO: Display instructions
+
           }
         ),
         AppbarButton(
           icon: Icons.refresh,
           onPressed: () {
-            // TODO: Rest game
+
           }
         ),
         SizedBox(width: MediaQuery.of(context).size.width * 0.05),
