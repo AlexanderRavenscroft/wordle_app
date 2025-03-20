@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wordle_app/components/game_appbar.dart';
+import 'package:wordle_app/components/game_drawer.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GamePage extends StatelessWidget {
@@ -7,20 +9,17 @@ class GamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bgColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.surface,
-        toolbarHeight: MediaQuery.of(context).size.height * 0.08,
-        elevation: 0,
-        centerTitle: true,   
-        title: Text(
-          'WORDLE', 
-          style: AppTypography.wordStyle.copyWith(
-            fontSize: MediaQuery.of(context).size.height * 0.04,
-            color: AppColors.secondary,
-          )
+      backgroundColor: AppColors.background,
+      drawerScrimColor: Colors.black.withValues(alpha: 0.5),
+      // AppBar
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          MediaQuery.of(context).size.height * 0.08,
         ),
+        child: GameAppBar(),
       ),
+      // Drawer
+      drawer: GameDrawer(),
     );
   }
 }
