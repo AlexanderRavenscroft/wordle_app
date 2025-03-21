@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/components/appbar_button.dart';
+import 'package:wordle_app/services/word_service.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GameAppBar extends StatelessWidget {
@@ -31,14 +32,13 @@ class GameAppBar extends StatelessWidget {
       actions: [
         AppbarButton(
           icon: Icons.lightbulb,
-          onPressed: () {
-
-          }
+          onPressed: () {},
         ),
         AppbarButton(
           icon: Icons.refresh,
-          onPressed: () {
-
+          onPressed: () async {
+            var guessedWord = await WordService.fetchWord();
+            debugPrint(guessedWord);
           }
         ),
         SizedBox(width: MediaQuery.of(context).size.width * 0.05),
