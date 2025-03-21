@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/components/menu/menu_appbar_button.dart';
 import 'package:wordle_app/services/api_service.dart';
+import 'package:wordle_app/services/word_service.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class MenuAppBar extends StatelessWidget {
@@ -37,8 +38,8 @@ class MenuAppBar extends StatelessWidget {
         MenuAppBarButton(
           icon: Icons.refresh,
           onPressed: () async {
-            var guessedWord = await APIService.fetchWord();
-            debugPrint(guessedWord);
+            WordService.choosenWord = await APIService.fetchWord();
+            debugPrint(WordService.choosenWord);
           }
         ),
         SizedBox(width: MediaQuery.of(context).size.width * 0.05),

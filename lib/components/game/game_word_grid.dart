@@ -12,6 +12,7 @@ class GameWordGrid extends StatelessWidget {
       children: List.generate(
         30, 
         (index) => GameWordTile(),
+        growable: false,
       ),
     );
   }

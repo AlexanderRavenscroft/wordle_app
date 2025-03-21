@@ -7,7 +7,7 @@ class APIService {
   static const String baseURL = 'https://api.frontendexpert.io/api/fe/wordle-words';
   static bool isLoading = false;
 
-  static Future<String?> fetchWord() async {
+  static Future<String> fetchWord() async {
     isLoading = true;
     try {
       final response = await http.get(Uri.parse(baseURL));
@@ -18,7 +18,7 @@ class APIService {
       } else {
         // Handle non-200 status codes
         debugPrint('Failed to load words. Status code: ${response.statusCode}');
-        return null; 
+        return ''; 
       }
     } on Exception catch (e) {
       debugPrint(e.toString());

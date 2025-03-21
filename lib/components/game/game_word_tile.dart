@@ -19,6 +19,14 @@ class GameWordTile extends StatelessWidget {
             color: AppColors.surface,
           ),
         ),
+        child: Center(
+          child: Text(
+            'P',
+            style: AppTypography.wordStyle.copyWith(
+              fontSize: MediaQuery.of(context).size.height * 0.04,
+            )
+          ),
+        ),
       ),
     );
   }
