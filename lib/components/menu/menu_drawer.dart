@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_app/components/game_drawer_tile.dart';
-import 'package:wordle_app/components/message_dialog.dart';
+import 'package:wordle_app/components/menu/menu_drawer_tile.dart';
+import 'package:wordle_app/components/menu/menu_message_dialog.dart';
 import 'package:wordle_app/themes/themes.dart';
 
-class GameDrawer extends StatelessWidget {
-  const GameDrawer({super.key});
+class MenuDrawer extends StatelessWidget {
+  const MenuDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,14 @@ class GameDrawer extends StatelessWidget {
           ),
 
           // Home
-          GameDrawerTile(
+          MenuDrawerTile(
             text: 'Home',
             icon: Icons.home,
             onTap: () => Navigator.pop(context),
           ),
 
           // New Game
-          GameDrawerTile(
+          MenuDrawerTile(
             text: 'New Game',
             icon: Icons.refresh,
             onTap: () => Navigator.pop(context),  
@@ -42,13 +42,13 @@ class GameDrawer extends StatelessWidget {
           ),
 
           // Instructions
-          GameDrawerTile(
+          MenuDrawerTile(
             text: 'How to play',
             icon: Icons.lightbulb,
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => MessageDialog(
+                builder: (context) => MenuMessageDialog(
                   headingText: 'How to Play',
                   contentText: "Coming soon",
                 ),
@@ -57,13 +57,13 @@ class GameDrawer extends StatelessWidget {
           ),
 
           // Creator Info
-          GameDrawerTile(
+          MenuDrawerTile(
             text: 'About Creator',
             icon: Icons.kebab_dining,
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => MessageDialog(
+                builder: (context) => MenuMessageDialog(
                   headingText: 'About Me',
                   contentText: "Hi! I am Alexander Ravenscroft, a passionate Flutter mobile app developer from Poland.\nI am 19 years old and have been programming for over three years. While I’m still at the beginning of my journey in mobile app development, I love building elegant, cross-platform applications that provide seamless user experiences. I enjoy taking on new challenges and turning ideas into functional apps.\nWhen I’m not coding, you’ll probably find me exploring UI/UX design trends, hitting the gym or sailing.\nLet’s connect and create something amazing together!!",
                 ),

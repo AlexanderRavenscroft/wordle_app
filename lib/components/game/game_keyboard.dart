@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_app/components/game_keyboard_key.dart';
+import 'package:wordle_app/components/game/game_keyboard_key.dart';
 
 class GameKeyboard extends StatelessWidget {
   GameKeyboard({super.key});

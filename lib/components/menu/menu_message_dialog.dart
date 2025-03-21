@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/themes/themes.dart';
 
-class MessageDialog extends StatelessWidget {
+class MenuMessageDialog extends StatelessWidget {
   final String headingText;
   final String contentText;
-  const MessageDialog({super.key, required this.headingText, required this.contentText});
+  const MenuMessageDialog({super.key, required this.headingText, required this.contentText});
 
   @override
   Widget build(BuildContext context) {

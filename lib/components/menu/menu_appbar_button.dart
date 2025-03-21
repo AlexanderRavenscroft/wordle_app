@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/themes/themes.dart';
 
-class AppbarButton extends StatelessWidget {
+class MenuAppBarButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
-  const AppbarButton({super.key, required this.icon, required this.onPressed});
+  const MenuAppBarButton({super.key, required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

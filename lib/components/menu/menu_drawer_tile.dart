@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/themes/themes.dart';
 
-class GameDrawerTile extends StatelessWidget {
+class MenuDrawerTile extends StatelessWidget {
   final String text;
   final IconData icon;
   final VoidCallback onTap;
 
-  const GameDrawerTile(
+  const MenuDrawerTile(
       {super.key,
       required this.text,
       required this.icon,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_app/components/game_word_tile.dart';
+import 'package:wordle_app/components/game/game_word_tile.dart';
 
 class GameWordGrid extends StatelessWidget {
   const GameWordGrid({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_app/components/game_appbar.dart';
-import 'package:wordle_app/components/game_drawer.dart';
-import 'package:wordle_app/components/game_keyboard.dart';
-import 'package:wordle_app/components/game_word_grid.dart';
+import 'package:wordle_app/components/menu/menu_appbar.dart';
+import 'package:wordle_app/components/menu/menu_drawer.dart';
+import 'package:wordle_app/components/game/game_keyboard.dart';
+import 'package:wordle_app/components/game/game_word_grid.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GamePage extends StatelessWidget {
@@ -19,10 +19,10 @@ class GamePage extends StatelessWidget {
         preferredSize: Size.fromHeight(
           MediaQuery.of(context).size.height * 0.08,
         ),
-        child: GameAppBar(),
+        child: MenuAppBar(),
       ),
       // Drawer
-      drawer: GameDrawer(),
+      drawer: MenuDrawer(),
 
       // Body
       body: Center(
