@@ -10,10 +10,7 @@ class GameWordTile extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final paddingValue = (screenWidth < screenHeight ? screenWidth : screenHeight) * 0.006;
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: paddingValue, 
-        vertical: paddingValue,
-      ),
+      padding: EdgeInsets.all(paddingValue),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.background,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_app/components/game_appbar.dart';
 import 'package:wordle_app/components/game_drawer.dart';
+import 'package:wordle_app/components/game_keyboard.dart';
 import 'package:wordle_app/components/game_word_grid.dart';
 import 'package:wordle_app/themes/themes.dart';
 
@@ -10,6 +11,7 @@ class GamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.background,
       drawerScrimColor: Colors.black.withValues(alpha: 0.5),
       // AppBar
@@ -27,24 +29,15 @@ class GamePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [ 
-            // Container(
-            //   color: AppColors.surface,
-            //   width: MediaQuery.of(context).size.width * 0.75,
-            //   height: MediaQuery.of(context).size.height * 0.42,  
-            // ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.5,
               child: GameWordGrid(),  
             ),
-            Container(
-                color: AppColors.card,
-                width: MediaQuery.of(context).size.width * 0.92,
-                height: MediaQuery.of(context).size.height * 0.24,
-            ),
+            GameKeyboard(),
           ],
         ),
       ),
-    );
+    );  
   }
 }
