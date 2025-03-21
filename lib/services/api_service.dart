@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class WordService {
+class APIService {
   static const String baseURL = 'https://api.frontendexpert.io/api/fe/wordle-words';
   static bool isLoading = false;
 

@@ -13,21 +13,29 @@ class GameKeyboardKey extends StatelessWidget {
     bool isSpecial = (label == "BACKSPACE" || label == "ENTER");
     return Padding(
       padding: EdgeInsets.all(paddingValue),
-      child: Container(
-        color: AppColors.card,
-        width: isSpecial ? screenWidth * 0.086 * 1.5 : screenWidth * 0.086,
+      child: Container(        
+        width: isSpecial ? screenWidth * 0.082 * 1.5 : screenWidth * 0.082,
         height: screenHeight * 0.06,
+        decoration: BoxDecoration(
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(4),
+        ),
         child: Center(
-          child: (label == "ENTER" || label == "BACKSPACE")
-          ?Icon(
-            label == "BACKSPACE" ? Icons.backspace_outlined : Icons.subdirectory_arrow_left_outlined,
-            color: AppColors.text,
-            size: screenHeight * 0.03,
-          )
-          :Text(
-            label == "BACKSPACE" ? '' : label,
-            style: AppTypography.wordStyle.copyWith(
-              fontSize: screenHeight * 0.03,
+          child: GestureDetector(
+            onTap: () {
+              debugPrint(label);
+            },
+            child: (label == "ENTER" || label == "BACKSPACE")
+            ?Icon(
+              label == "BACKSPACE" ? Icons.backspace_outlined : Icons.subdirectory_arrow_left_outlined,
+              color: AppColors.text,
+              size: screenHeight * 0.026,
+            )
+            :Text(
+              label,
+              style: AppTypography.wordStyle.copyWith(
+                fontSize: screenHeight * 0.026,
+              ),
             ),
           ),
         ),
