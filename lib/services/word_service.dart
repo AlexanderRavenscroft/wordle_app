@@ -1,19 +1,25 @@
 class WordService {
   static String choosenWord = '';
   static String typedWord = '';
-  static List<String> guesses = [];
+  static int currentRow = 0;
+  
+  static List<List<String>> guesses = [
+    [],
+  ];
 
   static void typeLetter(String letter) {
     if(typedWord.length < 5) {
       typedWord += letter;
-      print(typedWord);
+      guesses[currentRow].add(letter);
+      print(guesses);
     }
   }
 
   static void removeLetter(String letter) {
     if (typedWord.isNotEmpty) {
       typedWord = typedWord.substring(0, typedWord.length-1);
-      print(typedWord);
+      guesses[currentRow].removeLast();
+      print(guesses);
     }
   }
 
@@ -23,8 +29,9 @@ class WordService {
         print('MATCH');
         // Restart game
       } else if(guesses.length <= 5) {
-        // Add word to the guesses
-        guesses.add(typedWord);
+          guesses.add([]);
+          currentRow++;
+
         print(guesses);
       } else {
         print('gg');

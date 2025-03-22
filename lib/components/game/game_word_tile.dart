@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GameWordTile extends StatelessWidget {
-  const GameWordTile({super.key});
+  final String letter;
+  const GameWordTile({super.key, required this.letter});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,10 @@ class GameWordTile extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'P',
+            letter,
             style: AppTypography.wordStyle.copyWith(
               fontSize: MediaQuery.of(context).size.height * 0.04,
-            )
+            ),
           ),
         ),
       ),
