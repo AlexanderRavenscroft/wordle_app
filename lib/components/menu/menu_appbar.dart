@@ -32,14 +32,9 @@ class MenuAppBar extends StatelessWidget {
       // Actions
       actions: [
         MenuAppBarButton(
-          icon: Icons.lightbulb,
-          onPressed: () {},
-        ),
-        MenuAppBarButton(
           icon: Icons.refresh,
           onPressed: () => Provider.of<WordService>(context, listen: false).resetGame(),
         ),
-        SizedBox(width: MediaQuery.of(context).size.width * 0.05),
       ],
     );
   }
