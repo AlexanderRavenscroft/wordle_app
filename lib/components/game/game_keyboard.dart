@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wordle_app/components/game/game_keyboard_key.dart';
+import 'package:wordle_app/services/word_service_provider.dart';
 
 class GameKeyboard extends StatelessWidget {
   GameKeyboard({super.key});
@@ -19,10 +21,14 @@ class GameKeyboard extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: row.map((label) {
-              return Builder(
-                builder: (context) {
-                  return GameKeyboardKey(label: label);
+              return Selector<WordService, Color>(
+                selector: (context, wordService) {
+                  return wordService.keys[label]!;
+                },
+                builder: ((context, keyColors, child) {
+                  return GameKeyboardKey(label: label, keyColor: keyColors,);
                 }
+                )
               );
             }).toList(),
           );

@@ -8,19 +8,25 @@ class WordService extends ChangeNotifier{
   String _typedWord = '';
   int _currentRow = 0;
   
-  final Color _tileColor = AppColors.background;
-
   List<List<Map<String, Color>>> _guesses = [[{}]];
+
+  final Map<String, Color> _keys = {
+    for (var key in [
+      'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+      'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+      'ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE',
+    ]) key: AppColors.card,
+  };
+
 
   // Getters:
   List<List<Map<String, Color>>> get guesses => _guesses;
-  Color get tileColor => _tileColor;
-
+  Map<String, Color> get keys => _keys;
 
   void typeLetter(String letter) {
     if(_typedWord.length < 5) {
       _typedWord += letter;
-      _guesses[_currentRow].add({letter: _tileColor});
+      _guesses[_currentRow].add({letter: AppColors.background});
       notifyListeners();
     }
   }
@@ -67,6 +73,8 @@ class WordService extends ChangeNotifier{
     _currentRow = 0;
     _guesses = [[]];
 
+    _keys.updateAll((key, value) => AppColors.card);
+
     // Get new word
     _choosenWord = await APIService.fetchWord();
     debugPrint(_choosenWord);
@@ -96,15 +104,19 @@ class WordService extends ChangeNotifier{
         // Check if letter is at the right place
         if(_typedWord[i] == _choosenWord[i]) {
           letterColor = AppColors.primary;
+          _keys[_typedWord[i]] = AppColors.primary;
+          
 
         // Check if letter is at the wrong place
         } else {
           letterColor = AppColors.secondary;
+            _keys[_typedWord[i]] = AppColors.secondary;
         }
         
         // If its not in the word
       } else {
           letterColor = AppColors.card;
+          _keys[_typedWord[i]] = AppColors.surface;
       }
       // Update the tile color for the correct letter
       _guesses[_currentRow][i] = {_typedWord[i]: letterColor};
