@@ -5,7 +5,8 @@ import 'package:wordle_app/themes/themes.dart';
 
 class GameKeyboardKey extends StatelessWidget {
   final String label;
-  const GameKeyboardKey({super.key, required this.label});
+  final Color keyColor;
+  const GameKeyboardKey({super.key, required this.label, this.keyColor = AppColors.card});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class GameKeyboardKey extends StatelessWidget {
           width: isSpecial ? screenWidth * 0.082 * 1.5 : screenWidth * 0.082,
           height: screenHeight * 0.06,
           decoration: BoxDecoration(
-            color: AppColors.card,
+            color: keyColor,
             borderRadius: BorderRadius.circular(4),
           ),
           child: Center(

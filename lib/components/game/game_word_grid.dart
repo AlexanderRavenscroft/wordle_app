@@ -38,7 +38,7 @@ class GameWordGrid extends StatelessWidget {
                 return AppColors.background; 
               }
             },
-            builder: (context, tileColors, child) {
+              builder: (context, tileColors, child) {
                 return GameWordTile(letter: letter, color: tileColors);
               },
             );

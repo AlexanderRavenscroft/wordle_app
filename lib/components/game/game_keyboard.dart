@@ -19,7 +19,11 @@ class GameKeyboard extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: row.map((label) {
-              return GameKeyboardKey(label: label);
+              return Builder(
+                builder: (context) {
+                  return GameKeyboardKey(label: label);
+                }
+              );
             }).toList(),
           );
         }).toList(),
