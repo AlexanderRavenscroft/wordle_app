@@ -38,7 +38,6 @@ class WordService extends ChangeNotifier{
       } else if(_guesses.length <= 5) {
           _guesses.add([]);
           _currentRow++;
-          print(_guesses);
 
       // Restart game - You lost
       } else {

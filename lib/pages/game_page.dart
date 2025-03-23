@@ -4,7 +4,7 @@ import 'package:wordle_app/components/menu/menu_appbar.dart';
 import 'package:wordle_app/components/menu/menu_drawer.dart';
 import 'package:wordle_app/components/game/game_keyboard.dart';
 import 'package:wordle_app/components/game/game_word_grid.dart';
-import 'package:wordle_app/services/word_service.dart';
+import 'package:wordle_app/services/word_service_provider.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GamePage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _GamePageState extends State<GamePage> {
         ),
         child: MenuAppBar(),
       ),
-      
+
       // Drawer
       drawer: MenuDrawer(),
 

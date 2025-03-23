@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordle_app/components/menu/menu_appbar_button.dart';
-import 'package:wordle_app/services/word_service.dart';
+import 'package:wordle_app/services/word_service_provider.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class MenuAppBar extends StatelessWidget {
