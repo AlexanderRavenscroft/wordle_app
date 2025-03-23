@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class MenuMessageDialog extends StatelessWidget {
+  final Color headingColor;
   final String headingText;
   final String contentText;
-  const MenuMessageDialog({super.key, required this.headingText, required this.contentText});
+  const MenuMessageDialog({
+    super.key, 
+    required this.headingColor, 
+    required this.headingText, 
+    required this.contentText
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class MenuMessageDialog extends StatelessWidget {
         children: [
           Icon(
             Icons.info,
-            color: AppColors.secondary,
+            color: headingColor,
             size: MediaQuery.of(context).size.height * 0.04,
           ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.02),
@@ -29,7 +35,7 @@ class MenuMessageDialog extends StatelessWidget {
             headingText,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: AppColors.secondary,
+              color: headingColor,
               fontSize: MediaQuery.of(context).size.height * 0.04,
               fontWeight: FontWeight.bold,
             ),

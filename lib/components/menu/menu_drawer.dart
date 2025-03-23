@@ -49,6 +49,7 @@ class MenuDrawer extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) => MenuMessageDialog(
+                  headingColor: AppColors.secondary,
                   headingText: 'How to Play',
                   contentText: "Coming soon",
                 ),
@@ -64,6 +65,7 @@ class MenuDrawer extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) => MenuMessageDialog(
+                  headingColor: AppColors.secondary,
                   headingText: 'About Me',
                   contentText: "Hi! I am Alexander Ravenscroft, a passionate Flutter mobile app developer from Poland.\nI am 19 years old and have been programming for over three years. While I’m still at the beginning of my journey in mobile app development, I love building elegant, cross-platform applications that provide seamless user experiences. I enjoy taking on new challenges and turning ideas into functional apps.\nWhen I’m not coding, you’ll probably find me exploring UI/UX design trends, hitting the gym or sailing.\nLet’s connect and create something amazing together!!",
                 ),

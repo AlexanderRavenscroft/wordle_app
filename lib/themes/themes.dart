@@ -14,6 +14,7 @@ class AppTypography {
 class AppColors {
   static const Color primary = Color(0xFF6ca965); 
   static const Color secondary = Color(0xFFc8b653);
+  static const Color error = Color(0xFFFF0000);
   static const Color background= Color(0xFF121213); 
   static const Color text = Color(0xFFFFFFFF); 
   static const Color surface = Color(0xFF3a3a3c);  

@@ -18,7 +18,7 @@ class GameKeyboardKey extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if(label == "ENTER") {
-            Provider.of<WordService>(context, listen: false).checkWord();
+            Provider.of<WordService>(context, listen: false).checkWord(context);
           } else if (label == "BACKSPACE") {
             Provider.of<WordService>(context, listen: false).removeLetter();
           } else {

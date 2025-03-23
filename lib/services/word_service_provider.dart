@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wordle_app/components/menu/menu_message_dialog.dart';
 import 'package:wordle_app/services/api_service.dart';
+import 'package:wordle_app/themes/themes.dart';
 
 class WordService extends ChangeNotifier{
   String _choosenWord = '';
@@ -28,11 +30,11 @@ class WordService extends ChangeNotifier{
     }
   }
 
-  void checkWord() {
+  void checkWord(BuildContext context) {
     if (_typedWord.length == 5) {
       // Restart game - You won
       if(_typedWord == _choosenWord) {
-        print('MATCH');
+        endGame(context, AppColors.primary, 'YOU WIN');
 
       // Wrong answer, still left tries
       } else if(_guesses.length <= 5) {
@@ -41,7 +43,7 @@ class WordService extends ChangeNotifier{
 
       // Restart game - You lost
       } else {
-        print('gg');
+        endGame(context, AppColors.error, 'YOU LOST');
       }
 
       _typedWord = '';
@@ -60,6 +62,18 @@ class WordService extends ChangeNotifier{
     _choosenWord = await APIService.fetchWord();
     debugPrint(_choosenWord);
     
+    notifyListeners();
+  }
+
+  void endGame(BuildContext context, Color headingColor, String headingText) {
+    showDialog(
+      context: context, 
+      builder: (context) => MenuMessageDialog(
+        headingColor: headingColor,
+        headingText: headingText, 
+        contentText: 'The choosen word was: $_choosenWord',
+      )
+    );
     notifyListeners();
   }
 }
