@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordle_app/components/game/game_word_tile.dart';
 import 'package:wordle_app/services/word_service_provider.dart';
+import 'package:wordle_app/themes/themes.dart';
 
 class GameWordGrid extends StatelessWidget {
   const GameWordGrid({super.key});
@@ -28,7 +29,22 @@ class GameWordGrid extends StatelessWidget {
             }
           },
           builder: (context, letter, child) {
-            return GameWordTile(letter: letter);
+            
+            return Selector<WordService, Color>(
+              selector: (context, wordService) {
+                if (row < wordService.guesses.length &&
+                  col < wordService.guesses[row].length) {
+                return wordService.tileColor;
+              } else {
+                return AppColors.background; 
+              }
+            },
+            builder: (context, tileColors, child) {
+                return GameWordTile(letter: letter, color: tileColors);
+              },
+  
+              
+            );
           },
         );
       },

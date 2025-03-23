@@ -3,7 +3,8 @@ import 'package:wordle_app/themes/themes.dart';
 
 class GameWordTile extends StatelessWidget {
   final String letter;
-  const GameWordTile({super.key, required this.letter});
+  final Color color;
+  const GameWordTile({super.key, required this.letter, this.color = AppColors.background});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class GameWordTile extends StatelessWidget {
       padding: EdgeInsets.all(paddingValue),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.background,
+          color: color,
           border: Border.all(
             width: 2,
             color: AppColors.surface,

@@ -8,10 +8,13 @@ class WordService extends ChangeNotifier{
   String _typedWord = '';
   int _currentRow = 0;
   
+  Color _tileColor = AppColors.background;
+
   List<List<String>> _guesses = [[]];
 
   // Getters:
   List<List<String>> get guesses => _guesses;
+  Color get tileColor => _tileColor;
 
 
   void typeLetter(String letter) {
@@ -30,8 +33,11 @@ class WordService extends ChangeNotifier{
     }
   }
 
-  void checkWord(BuildContext context) {
+  void checkWord(BuildContext context) async {
     if (_typedWord.length == 5) {
+
+      await checkLetters();
+
       // Restart game - You won
       if(_typedWord == _choosenWord) {
         endGame(context, AppColors.primary, 'YOU WIN');
@@ -75,5 +81,28 @@ class WordService extends ChangeNotifier{
       )
     );
     notifyListeners();
+  }
+
+  Future<void> checkLetters() async{
+    for (int i=0; i<_typedWord.length; i++) {
+      // Check if letter is in the word
+      if(_choosenWord.contains(_typedWord[i])) {
+        
+        // Check if its in the right place
+        if(_typedWord[i] == _choosenWord[i]) {
+          _tileColor = AppColors.primary;
+          notifyListeners();
+          print('${_typedWord[i]} jest w słowie i na dobrym miejscu');
+        } else {
+          _tileColor = AppColors.secondary;
+          notifyListeners();
+          print('${_typedWord[i]} jest w słowie i na złym miejscu');
+        }
+        
+      } else {
+        print('${_typedWord[i]} nie jest w słowie');
+      }
+    }
+
   }
 }
