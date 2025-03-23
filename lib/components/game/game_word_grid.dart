@@ -23,18 +23,17 @@ class GameWordGrid extends StatelessWidget {
           selector: (context, wordService) {
             if (row < wordService.guesses.length &&
                 col < wordService.guesses[row].length) {
-              return wordService.guesses[row][col];
+              return wordService.guesses[row][col].keys.first;
             } else {
               return ''; // Return an empty string if out of bounds
             }
           },
-          builder: (context, letter, child) {
-            
+          builder: (context, letter, child) {   
             return Selector<WordService, Color>(
               selector: (context, wordService) {
                 if (row < wordService.guesses.length &&
                   col < wordService.guesses[row].length) {
-                return wordService.tileColor;
+                return wordService.guesses[row][col].values.first;
               } else {
                 return AppColors.background; 
               }
@@ -42,8 +41,6 @@ class GameWordGrid extends StatelessWidget {
             builder: (context, tileColors, child) {
                 return GameWordTile(letter: letter, color: tileColors);
               },
-  
-              
             );
           },
         );

@@ -8,19 +8,19 @@ class WordService extends ChangeNotifier{
   String _typedWord = '';
   int _currentRow = 0;
   
-  Color _tileColor = AppColors.background;
+  final Color _tileColor = AppColors.background;
 
-  List<List<String>> _guesses = [[]];
+  List<List<Map<String, Color>>> _guesses = [[{}]];
 
   // Getters:
-  List<List<String>> get guesses => _guesses;
+  List<List<Map<String, Color>>> get guesses => _guesses;
   Color get tileColor => _tileColor;
 
 
   void typeLetter(String letter) {
     if(_typedWord.length < 5) {
       _typedWord += letter;
-      _guesses[_currentRow].add(letter);
+      _guesses[_currentRow].add({letter: _tileColor});
       notifyListeners();
     }
   }
@@ -35,12 +35,13 @@ class WordService extends ChangeNotifier{
 
   void checkWord(BuildContext context) async {
     if (_typedWord.length == 5) {
-
       await checkLetters();
 
       // Restart game - You won
       if(_typedWord == _choosenWord) {
-        endGame(context, AppColors.primary, 'YOU WIN');
+        if(context.mounted) {
+          endGame(context, AppColors.primary, 'YOU WIN');
+        }
 
       // Wrong answer, still left tries
       } else if(_guesses.length <= 5) {
@@ -49,7 +50,9 @@ class WordService extends ChangeNotifier{
 
       // Restart game - You lost
       } else {
-        endGame(context, AppColors.error, 'YOU LOST');
+        if(context.mounted) {
+          endGame(context, AppColors.error, 'YOU LOST');
+        }
       }
 
       _typedWord = '';
@@ -85,24 +88,27 @@ class WordService extends ChangeNotifier{
 
   Future<void> checkLetters() async{
     for (int i=0; i<_typedWord.length; i++) {
+      Color letterColor;
+
       // Check if letter is in the word
       if(_choosenWord.contains(_typedWord[i])) {
         
-        // Check if its in the right place
+        // Check if letter is at the right place
         if(_typedWord[i] == _choosenWord[i]) {
-          _tileColor = AppColors.primary;
-          notifyListeners();
-          print('${_typedWord[i]} jest w słowie i na dobrym miejscu');
+          letterColor = AppColors.primary;
+
+        // Check if letter is at the wrong place
         } else {
-          _tileColor = AppColors.secondary;
-          notifyListeners();
-          print('${_typedWord[i]} jest w słowie i na złym miejscu');
+          letterColor = AppColors.secondary;
         }
         
+        // If its not in the word
       } else {
-        print('${_typedWord[i]} nie jest w słowie');
+          letterColor = AppColors.card;
       }
+      // Update the tile color for the correct letter
+      _guesses[_currentRow][i] = {_typedWord[i]: letterColor};
     }
-
+    notifyListeners();
   }
 }
