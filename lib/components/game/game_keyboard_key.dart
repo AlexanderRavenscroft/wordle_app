@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_app/services/word_service.dart';
+import 'package:provider/provider.dart';
+import 'package:wordle_app/services/word_service_provider.dart';
 import 'package:wordle_app/themes/themes.dart';
 
 class GameKeyboardKey extends StatelessWidget {
@@ -17,11 +18,11 @@ class GameKeyboardKey extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if(label == "ENTER") {
-            WordService.checkWord();
+            Provider.of<WordService>(context, listen: false).checkWord();
           } else if (label == "BACKSPACE") {
-            WordService.removeLetter(label);
+            Provider.of<WordService>(context, listen: false).removeLetter();
           } else {
-            WordService.typeLetter(label);
+            Provider.of<WordService>(context, listen: false).typeLetter(label);
           }    
         },
         child: Container(        

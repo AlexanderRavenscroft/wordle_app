@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:wordle_app/pages/game_page.dart';
+import 'package:wordle_app/services/word_service.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized(); 
@@ -13,7 +15,10 @@ Future main() async{
 
   // Run app
   runApp(
-    const MyApp(),
+    ChangeNotifierProvider(
+      create: (context) => WordService(),
+      child: const  MyApp(),
+    ),
   );
 }
 

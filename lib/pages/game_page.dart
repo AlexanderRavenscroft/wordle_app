@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wordle_app/components/menu/menu_appbar.dart';
 import 'package:wordle_app/components/menu/menu_drawer.dart';
 import 'package:wordle_app/components/game/game_keyboard.dart';
 import 'package:wordle_app/components/game/game_word_grid.dart';
+import 'package:wordle_app/services/word_service.dart';
 import 'package:wordle_app/themes/themes.dart';
 
-class GamePage extends StatelessWidget {
+class GamePage extends StatefulWidget {
   const GamePage({super.key});
+
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
+
+  @override
+  void initState() {
+    Provider.of<WordService>(context, listen: false).resetGame();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +35,7 @@ class GamePage extends StatelessWidget {
         ),
         child: MenuAppBar(),
       ),
+      
       // Drawer
       drawer: MenuDrawer(),
 

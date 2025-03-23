@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wordle_app/components/game/game_word_tile.dart';
 import 'package:wordle_app/services/word_service.dart';
 
@@ -17,11 +18,20 @@ class GameWordGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         int row = index ~/ 5;
         int col = index % 5;
-        String letter = (row < WordService.guesses.length && col < WordService.guesses[row].length)
-          ? WordService.guesses[row][col]
-          : '';
-        return GameWordTile(letter: letter);
+        return Selector<WordService, String>(  
+          selector: (context, wordService) {
+            if (row < wordService.guesses.length &&
+                col < wordService.guesses[row].length) {
+              return wordService.guesses[row][col];
+            } else {
+              return ''; // Return an empty string if out of bounds
+            }
+          },
+          builder: (context, letter, child) {
+            return GameWordTile(letter: letter);
+          },
+        );
       },
     );
-  }
+  } 
 }
