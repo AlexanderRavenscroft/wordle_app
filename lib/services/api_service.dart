@@ -5,10 +5,11 @@ import 'package:http/http.dart' as http;
 
 class APIService {
   static const String baseURL = 'https://api.frontendexpert.io/api/fe/wordle-words';
-  static bool isLoading = false;
+
+  static ValueNotifier<bool> isLoading = ValueNotifier(false);
 
   static Future<String> fetchWord() async {
-    isLoading = true;
+    isLoading.value = true;
     try {
       final response = await http.get(Uri.parse(baseURL));
       if(response.statusCode == 200) {
@@ -24,7 +25,7 @@ class APIService {
       debugPrint(e.toString());
       return 'Failed to load word';
     } finally {
-      isLoading = false;
+      isLoading.value = false;
     }
   }
 }

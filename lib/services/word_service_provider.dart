@@ -85,6 +85,7 @@ class WordService extends ChangeNotifier{
   void endGame(BuildContext context, Color headingColor, String headingText) {
     showDialog(
       context: context, 
+      barrierColor: Colors.black.withValues(alpha: 0.8),
       builder: (context) => MenuMessageDialog(
         headingColor: headingColor,
         headingText: headingText, 

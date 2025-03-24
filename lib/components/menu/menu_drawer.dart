@@ -39,7 +39,10 @@ class MenuDrawer extends StatelessWidget {
           MenuDrawerTile(
             text: 'New Game',
             icon: Icons.refresh,
-            onTap: () => Provider.of<WordService>(context, listen: false).resetGame(),
+            onTap: () {
+              Provider.of<WordService>(context, listen: false).resetGame();
+              Navigator.pop(context);
+            } 
           ),
 
           // Instructions

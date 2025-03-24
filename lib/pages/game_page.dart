@@ -4,6 +4,7 @@ import 'package:wordle_app/components/menu/menu_appbar.dart';
 import 'package:wordle_app/components/menu/menu_drawer.dart';
 import 'package:wordle_app/components/game/game_keyboard.dart';
 import 'package:wordle_app/components/game/game_word_grid.dart';
+import 'package:wordle_app/services/api_service.dart';
 import 'package:wordle_app/services/word_service_provider.dart';
 import 'package:wordle_app/themes/themes.dart';
 
@@ -47,7 +48,27 @@ class _GamePageState extends State<GamePage> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.5,
-              child: GameWordGrid(),  
+              child: ValueListenableBuilder<bool>(
+                valueListenable: APIService.isLoading,
+                builder: (context, isLoading, child) {
+                  return isLoading
+                  ? Center(
+                      child: FractionallySizedBox(
+                        heightFactor: 0.5,
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: SizedBox(
+                            child: CircularProgressIndicator(
+                            color: AppColors.secondary,
+                            strokeWidth: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ) 
+                  : GameWordGrid();
+                },
+              ),   
             ),
             GameKeyboard(),
           ],
