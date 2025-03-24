@@ -90,7 +90,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-  
+
 flutter_native_splash:
   android: true
   ios: true
@@ -108,5 +108,5 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/app_icon.png" 
-  adaptive_icon_background: "#151515" 
+  adaptive_icon_background: "#FFFFFFFF" 
   remove_alpha_ios: true
