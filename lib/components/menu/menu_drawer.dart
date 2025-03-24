@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordle_app/components/menu/menu_drawer_tile.dart';
+import 'package:wordle_app/components/menu/menu_guide_dialog.dart';
 import 'package:wordle_app/components/menu/menu_message_dialog.dart';
 import 'package:wordle_app/services/word_service_provider.dart';
 import 'package:wordle_app/themes/themes.dart';
@@ -52,11 +53,7 @@ class MenuDrawer extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => MenuMessageDialog(
-                  headingColor: AppColors.secondary,
-                  headingText: 'How to Play',
-                  contentText: "Coming soon",
-                ),
+                builder: (context) => MenuGuideDialog(),
               );
             }
           ),
